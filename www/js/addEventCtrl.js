@@ -1,6 +1,6 @@
 angular.module('jauntly.addEventCtrl', [])
 
-.controller('addEventCtrl', function($scope, ExpediaInfo, GoogleGeocodeInfo) {
+.controller('addEventCtrl', function ($scope, ExpediaInfo, GoogleGeocodeInfo) {
   $scope.results = {};
   $scope.address = {};
 
@@ -26,7 +26,7 @@ angular.module('jauntly.addEventCtrl', [])
       $scope.address = address;
       console.log($scope.address);
     })
-  }
+  };
 
   // $scope.map = function() {
   //   new google.maps.Map(document.getElementById('map'), {

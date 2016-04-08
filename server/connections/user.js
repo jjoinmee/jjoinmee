@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var router = express.Router();
 var User = require('../models/userModel');
@@ -22,7 +20,7 @@ module.exports = {
         res.send(data);
       });
     },
-    post: function(req,res){
+    post: function (req,res) {
       knex('users').insert({
         FirstName: req.query.FirstName,
         LastName: req.query.LastName,
