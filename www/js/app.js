@@ -49,7 +49,8 @@ angular.module('jauntly', ['ionic', 'jauntly.services', 'jauntly.appCtrl', 'jaun
     url: '/login',
     views: {
       'menuContent': {
-        templateUrl: 'templates/login.html'
+        templateUrl: 'templates/login.html',
+        controller: 'AppCtrl'
       }
     }
   })
