@@ -26,7 +26,7 @@
     <div class="results" ng-repeat="result in this.results | limitTo: 10">
       <div class="info">
         <div class="title">{{ result.title }}</div>
-        <div class="thumb"><img ng-click='clickInfo(result); getGoogApi(result.latLng)' ng-src="{{result.imageUrl}}"></div>
+        <div class="thumb"><img ng-click='clickInfo(result); getAddress(result.latLng)' ng-src="{{result.imageUrl}}"></div>
       </div>
     </div>
 

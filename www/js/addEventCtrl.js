@@ -20,7 +20,7 @@ angular.module('jauntly.addEventCtrl', [])
     $scope.inputAddress = result.latLng;
   };
 
-  $scope.getGoogApi = function (latlng) {
+  $scope.getAddress = function (latlng) {
     GoogleGeocodeInfo.getAddress(latlng)
     .then(function (address) {
       $scope.address = address.data.results[0].formatted_address;
