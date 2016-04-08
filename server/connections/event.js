@@ -14,21 +14,28 @@ var app = express();
 app.use(bodyParser());
 
 module.exports = {
-  users: {
+  events: {
     get: function (req, res) {
       //want to get one user
+
       console.log(req);
-      knex('users').where('Username',req.query.Username).then(function(data){
-        res.send(data);
+      knex('users').where({Username: req.query.Username}).select('id').then(function(data) {
+        knex('events').where({'userId': data}).select('EventName').then(function(data){
+          res.send(data);
+        });
       });
+
     },
     post: function(req,res){
-      knex('users').insert({
-        FirstName: req.query.FirstName,
-        LastName: req.query.LastName,
-        Username: req.query.Username
+      knex('events').insert({
+        EventName: req.query.EventName,
+        userId: knex('users').where({Username: req.query.Username}).select('id'),
+        EventTime: req.query.EventTime,
+        EventDuration: req.query.EventDuration,
+        EventDate: req.query.EventDate,
+        Location: req.query.Location
       }).then(function(){
-        res.send('User added.');
+        res.send('Event added.');
       });
     }
   }
