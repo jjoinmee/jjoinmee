@@ -2,7 +2,7 @@ angular.module('jauntly.appCtrl', [])
 
 .controller('AppCtrl', function ($scope, $ionicModal, $timeout, ngFB) {
   $scope.fbLogin = function () {
-    ngFB.login({scope: 'email'}).then(
+    ngFB.login({scope: 'email,publish_actions'}).then(
       function (response) {
         if (response.status === 'connected') {
           $state.go('app.myEvents');
