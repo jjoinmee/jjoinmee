@@ -2,7 +2,7 @@ angular.module('jauntly.addEventCtrl', [])
 
 .controller('addEventCtrl', function ($scope, ExpediaInfo, GoogleGeocodeInfo) {
   $scope.results = {};
-  $scope.address = {};
+  $scope.address;
 
   $scope.search = function (location, activity) {
     ExpediaInfo.getExpInfo(location, activity)
@@ -23,7 +23,7 @@ angular.module('jauntly.addEventCtrl', [])
   $scope.getGoogApi = function (latlng) {
     GoogleGeocodeInfo.getAddress(latlng)
     .then(function (address) {
-      $scope.address = address;
+      $scope.address = address.data.results[0].formatted_address;
       console.log($scope.address);
     })
   };
