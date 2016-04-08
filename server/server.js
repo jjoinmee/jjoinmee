@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = process.env.PORT || 8000;
+var port = process.env.PORT || 8100;
 // var config = require('./database');
 var eventRoute = require('./routes/eventRoute.js');
 var userRoute = require('./routes/userRoute.js');
