@@ -14,5 +14,9 @@ angular.module('jauntly.addEventCtrl', [])
     });
   };
 
+  $scope.clickInfo = function (result) {
+    $scope.inputTitle = result.title;
+    $scope.inputAddress = result.latLng;
+  };
 
 });
