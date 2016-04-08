@@ -1,12 +1,10 @@
-var dbUtil = require('../utils/utilities');
-
 var knex = require('knex') ({
   client: 'mysql',
   connection: {
-    host: dbUtil.host,
-    user: dbUtil.user,
-    password: dbUtil.password,
-    database: dbUtil.database
+    host: 'mysqlcluster16.registeredsite.com',
+    user: 'joinme',
+    password: '!Qaz2wsx',
+    database: 'joinme'
   },
   pool: {
     min: 0,
