@@ -7,3 +7,5 @@ plugins/
 /www/js/apiKey.js
 
 .idea
+
+utils/
