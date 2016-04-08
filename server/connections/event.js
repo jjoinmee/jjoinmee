@@ -1,5 +1,3 @@
-
-
 var express = require('express');
 var router = express.Router();
 var User = require('../models/userModel');
@@ -17,16 +15,14 @@ module.exports = {
   events: {
     get: function (req, res) {
       //want to get one user
-
       console.log(req);
       knex('users').where({Username: req.query.Username}).select('id').then(function(data) {
         knex('events').where({'userId': data}).select('EventName').then(function(data){
           res.send(data);
         });
       });
-
     },
-    post: function(req,res){
+    post: function (req,res) {
       knex('events').insert({
         EventName: req.query.EventName,
         userId: knex('users').where({Username: req.query.Username}).select('id'),
