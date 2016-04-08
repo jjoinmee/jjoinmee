@@ -8,7 +8,8 @@ angular.module('jauntly.services', [])
       params      : {
         location   : location,
         activity   : activity,
-        apikey     : expKey
+        apikey     : expKey,
+        limitTo    : 5
       },
       url         : 'http://terminal2.expedia.com/x/activities/search'
     })
