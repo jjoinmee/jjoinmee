@@ -5,7 +5,7 @@ var port = process.env.PORT || 8000;
 var eventRoute = require('./routes/eventRoute.js');
 var userRoute = require('./routes/userRoute.js');
 
-app.use(express.static('./client'));
+app.use(express.static('./www'));
 
 app.use('/api/events',eventRoute);
 app.use('/api/users', userRoute);

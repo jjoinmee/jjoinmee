@@ -17,7 +17,7 @@ module.exports = {
       //want to get one user
       console.log(req);
       knex('users').where({Username: req.query.Username}).select('id').then(function(data) {
-        knex('events').where({'userId': data}).select('EventName').then(function(data){
+        knex('events').where({'userId': data[0].id}).select('EventName').then(function(data){
           res.send(data);
         });
       });
