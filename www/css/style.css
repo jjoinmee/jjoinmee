@@ -2,3 +2,7 @@
 h1 {
   padding-left: 5%;
 }
+
+#map {
+  height: 100%;
+}
