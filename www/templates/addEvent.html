@@ -9,7 +9,7 @@
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Location</span>
-        <input type="text" value="{{ inputAddress }}">
+        <input type="text" value="{{ address }}">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Time</span>
@@ -26,7 +26,7 @@
     <div class="results" ng-repeat="result in this.results | limitTo: 10">
       <div class="info">
         <div class="title">{{ result.title }}</div>
-        <div class="thumb"><img ng-click='clickInfo(result); getGoogApi(result.latLng)' ng-src="{{result.imageUrl}}"></div>
+        <div class="thumb"><img ng-click='clickInfo(result); getAddress(result.latLng)' ng-src="{{result.imageUrl}}"></div>
       </div>
     </div>
 
