@@ -43,6 +43,15 @@ angular.module('jauntly', ['ionic', 'jauntly.services', 'jauntly.appCtrl', 'jaun
     }
   })
 
+  .state('app.login', {
+    url: '/login',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/login.html'
+      }
+    }
+  })
+
   .state('app.myEvents', {
       url: '/myevents',
       views: {
