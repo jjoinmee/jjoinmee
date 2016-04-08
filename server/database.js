@@ -27,6 +27,8 @@ knex.schema.createTableIfNotExists('events', function (event) {
   event.increments('id').primary();
   event.string('EventName');
   // event.integer('Owner_id').references('User_id');
+  event.integer('userId').unsigned();
+  event.foreign('userId').references('id').inTable('users');
   event.string('EventTime');
   event.string('EventDuration');
   event.string('EventDate');
@@ -40,7 +42,6 @@ knex.schema.createTableIfNotExists('users_events', function(join) {
   join.integer('UserId').unsigned();
   join.foreign('EventID').references('id').inTable('events');
   join.foreign('UserId').references('id').inTable('users');
-
 }).then(function() {
   console.log('users_events join table created');
 });
