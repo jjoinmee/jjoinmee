@@ -9,15 +9,26 @@
 
     <ion-content>
       <h1>User Log In</h1>
-        <div class="list list-inset"  style="background: #1b5a83">
+<!--         <div class="list list-inset"  style="background: #1b5a83">
 
 
-            <button class="button button-block button-light" ng-click="fbLogin()">
+            <button class="button button-block button-light" ng-click="login()">
                 <i class="icon ion-social-facebook"></i>
                 &nbsp;Login with Facebook
             </button>
 
 
+        </div> -->
+
+        <div ng-hide="authData" class="card" ng-click="login()">
+          <button class="item">
+          Log In with Facebook
+          </button>
+        </div>
+        <div class="card" ng-show="authData">
+          <div class="item item-text-wrap">
+            Hello {{authData.facebook.displayName}}!
+          </div>
         </div>
 
     </ion-content>
