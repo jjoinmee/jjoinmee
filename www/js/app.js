@@ -4,11 +4,11 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('jauntly', ['ionic', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'ngOpenFB'])
+angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl'])
 
-.run(function($ionicPlatform, ngFB) {
-  ngFB.init({appId: '212193769152802'});
+.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
+    // OAuth.initialize(fbAppKey);
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
