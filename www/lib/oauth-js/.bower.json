@@ -1,0 +1,29 @@
+{
+  "name": "oauth-js",
+  "version": "0.5.2",
+  "main": "dist/oauth.min.js",
+  "description": "OAuth that just works",
+  "license": "Apache-2.0",
+  "ignore": [
+    "coffee",
+    "coverage",
+    "js",
+    "node_modules",
+    "tests",
+    "templates",
+    "Gruntfile.js",
+    "package.json",
+    ".gitignore"
+  ],
+  "homepage": "https://github.com/oauth-io/oauth-js",
+  "_release": "0.5.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.5.2",
+    "commit": "000f4b2d1dc5346767b95e7d91521b440ef58eb4"
+  },
+  "_source": "https://github.com/oauth-io/oauth-js.git",
+  "_target": "^0.5.2",
+  "_originalSource": "oauthio-web",
+  "_direct": true
+}
