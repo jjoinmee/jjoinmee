@@ -34,7 +34,7 @@ angular.module('jauntly.appCtrl', [])
 //   // };
 // })
 
-.controller('AppCtrl', function($scope, Auth) {
+.controller('AppCtrl', function($scope, Auth, ParentFactory) {
   // $scope.login = function() {
   //   Auth.$authWithOAuthRedirect("facebook");
   // };
@@ -51,6 +51,7 @@ angular.module('jauntly.appCtrl', [])
     Auth.$authWithOAuthRedirect("facebook").then(function(authData) {
       // User successfully logged in
       console.log('successful login', authData)
+      ParentFactory.loggedIn = true;
     }).catch(function(error) {
       if (error.code === "TRANSPORT_UNAVAILABLE") {
         Auth.ref.authWithOAuthPopup("facebook").then(function(authData) {

@@ -65,4 +65,17 @@ angular.module('jauntly.services', [])
   }
 
 });
+// .factory("Credentials", function(Auth) {
+//   var isLoggedIn = function(){
+//     if (Auth.authData.facebook.accessToken) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   return {
+//     isLoggedIn : isLoggedIn
+//   }
+// });
 
