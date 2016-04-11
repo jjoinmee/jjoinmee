@@ -25,9 +25,12 @@
           Log In with Facebook
           </button>
         </div>
-        <div class="card" ng-show="authData">
+        <div class="card" ng-show="authData" ng-click="requestHandler()">
           <div class="item item-text-wrap">
             Hello {{authData.facebook.displayName}}!
+            <button type="item">
+              Log Out
+            </button>
           </div>
         </div>
 
