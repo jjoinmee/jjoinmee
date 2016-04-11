@@ -81,15 +81,6 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
       }
     });
 
-  // .state('app.single', {
-  //   url: '/playlists/:playlistId',
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'templates/playlist.html',
-  //       controller: 'PlaylistCtrl'
-  //     }
-  //   }
-  // });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/myevents');
 });
