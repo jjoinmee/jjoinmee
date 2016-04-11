@@ -28,6 +28,7 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
   });
 })
 
@@ -49,6 +50,12 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
       'menuContent': {
         templateUrl: 'templates/search.html'
       }
+    },
+    resolve: {
+      auth: function (Auth) {
+        console.log('this is the Auth factory ', Auth);
+        return Auth.auth.$requireAuth();
+      }
     }
   })
 
@@ -58,6 +65,12 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
       'menuContent': {
         templateUrl: 'templates/login.html',
         controller: 'AppCtrl'
+      }
+    },
+    resolve: {
+      auth: function (Auth) {
+        console.log('this is the Auth factory ', Auth);
+        return Auth.auth.$requireAuth();
       }
     }
   })
@@ -69,7 +82,13 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
           templateUrl: 'templates/myEvents.html',
           controller: 'myEventsCtrl'
         }
+      },
+    resolve: {
+      auth: function (Auth) {
+        console.log('this is the Auth factory ', Auth);
+        return Auth.auth.$requireAuth();
       }
+    }
     })
     .state('app.addEvent', {
       url: '/addevent',
@@ -77,6 +96,12 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
         'menuContent': {
           templateUrl: 'templates/addEvent.html',
           controller: 'addEventCtrl'
+        }
+      },
+      resolve: {
+        auth: function (Auth) {
+          console.log('this is the Auth factory ', Auth);
+          return Auth.auth.$requireAuth();
         }
       }
     });

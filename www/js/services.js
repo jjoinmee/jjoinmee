@@ -42,10 +42,14 @@ angular.module('jauntly.services', [])
 
   var ref = new Firebase("https://amber-fire-6746.firebaseio.com");
   var auth = $firebaseAuth(ref);
+  var authData = null;
+  var isSignedIn = false;
 
   return {
     ref : ref,
-    auth: auth
+    auth: auth,
+    authData: authData,
+    isSignedIn: isSignedIn
   }
 
 });
