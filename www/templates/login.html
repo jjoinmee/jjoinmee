@@ -21,15 +21,15 @@
         </div> -->
 
 
-      <div ng-hide="authData" class="card" ng-click="login()">
+      <div ng-hide="isLoggedIn" class="card" ng-click="login()">
         <button class="item">
           Log In with Facebook
         </button>
       </div>
 
-      <div class="card" ng-show="authData" ng-click="logout()">
+      <div class="card" ng-show="isLoggedIn" ng-click="logout()">
         <div class="item item-text-wrap">
-          Hello {{authData.facebook.displayName}}!
+          Hello {{data.facebook.displayName}}!
           <button type="item">
             Log Out
           </button>
