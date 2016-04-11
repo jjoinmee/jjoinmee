@@ -34,41 +34,78 @@ angular.module('jauntly.appCtrl', [])
 //   // };
 // })
 
-.controller('AppCtrl', function($scope, Auth, ParentFactory) {
+.controller('AppCtrl', function($scope, $state, Auth, ParentFactory, $timeout) {
   // $scope.login = function() {
   //   Auth.$authWithOAuthRedirect("facebook");
   // };
+  $scope.random = function () {
+    console.log('random');
+    $state.reload();
+  }
+
   Auth.ref.onAuth(function(authData) {
    if (authData === null) {
      console.log("Not logged in yet");
    } else {
      console.log("Logged in as", authData.uid);
    }
+
    $scope.authData = authData; // This will display the user's name in our view
+   return new Promise (function(resolve) {
+    $timeout(resolve($scope.random()), 3000);
+   })
   });
 
+
   $scope.login = function() {
-    Auth.$authWithOAuthRedirect("facebook").then(function(authData) {
-      // User successfully logged in
-      console.log('successful login', authData)
-      ParentFactory.loggedIn = true;
-    }).catch(function(error) {
-      if (error.code === "TRANSPORT_UNAVAILABLE") {
-        Auth.ref.authWithOAuthPopup("facebook").then(function(authData) {
-          // User successfully logged in. We can log to the console
-          // since we’re using a popup here
-          console.log(authData);
-        });
-      } else {
-        // Another error occurred
-        console.log(error);
-      }
-    });
+    return Auth.ref.authWithOAuthRedirect("facebook", function(error, authData) {
+      if (error) {
+         console.log("Login Failed!", error);
+       } else {
+         // the access token will allow us to make Open Graph API calls
+         console.log('$scope.login success', authData.facebook.accessToken);
+       }
+    }, {
+      scope: "email" // the permissions requested
+    })
+
+    // .then(function(error, authData) {
+    //   // User successfully logged in
+    //   console.log('successful login', authData)
+    //   ParentFactory.loggedIn = true;
+    //   // $state.reload();
+    // })
+
+    // .catch(function(error) {
+    //   if (error.code === "TRANSPORT_UNAVAILABLE") {
+    //     Auth.ref.authWithOAuthPopup("facebook").then(function(authData) {
+    //       // User successfully logged in. We can log to the console
+    //       // since we’re using a popup here
+    //      console.log(authData);
+    //     });
+    //   } else {
+    //     // Another error occurred
+    //     console.log(error);
+    //   }
+    // });
   };
 
-  $scope.logout = function() {
+  $scope.requestHandler = function() {
+    console.log('logging out button');
+    Auth.ref.unauth();
+    return new Promise (function(resolve) {
+      resolve($scope.logout(true));
+    })
+    // $state.reload();
+  };
 
+  $scope.logout = function (input) {
+    $state.go('app.login');
+    console.log(input)
+    $state.reload();
   }
+
+
 
 //     $scope.facebookLogin = function() {
 //         $cordovaOauth.facebook(fbAppKey, ["email"]).then(function(result) {
