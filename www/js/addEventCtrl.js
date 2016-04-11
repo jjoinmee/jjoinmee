@@ -1,6 +1,14 @@
 angular.module('jauntly.addEventCtrl', [])
 
-.controller('addEventCtrl', function ($scope, ExpediaInfo, GoogleGeocodeInfo) {
+.controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth) {
+
+  (function(){
+    // console.log(!Auth.ref.getAuth().token);
+    if (Auth.ref.getAuth() === null) {
+      $state.go('app.login');
+    }
+  })();
+
   $scope.results = {};
   $scope.address;
 

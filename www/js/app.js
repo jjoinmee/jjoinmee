@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl'])
+angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl'])
 
 .factory('ParentFactory', function() {
   var loggedIn = false;
@@ -36,11 +36,11 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html'
-    // controller: 'ParentCtrl'
+    // controller: 'AppCtrl'
   })
 
   .state('app.search', {
@@ -66,7 +66,8 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
       url: '/myevents',
       views: {
         'menuContent': {
-          templateUrl: 'templates/myEvents.html'
+          templateUrl: 'templates/myEvents.html',
+          controller: 'myEventsCtrl'
         }
       }
     })
