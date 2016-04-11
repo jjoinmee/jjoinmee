@@ -2,12 +2,16 @@ angular.module('jauntly.addEventCtrl', [])
 
 .controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth) {
 
-  (function(){
-    // console.log(!Auth.ref.getAuth().token);
-    if (Auth.ref.getAuth() === null) {
-      $state.go('app.login');
-    }
-  })();
+  // (function(){
+  //   // console.log(!Auth.ref.getAuth().token);
+  //   console.log('getuaht' , Auth.isSignedIn);
+  //   if (!Auth.isSignedIn) {
+  //     // $state.reload();
+  //     $state.go('app.login');
+  //   } else {
+  //     $state.reload();
+  //   }
+  // })();
 
   $scope.results = {};
   $scope.address;
@@ -36,11 +40,12 @@ angular.module('jauntly.addEventCtrl', [])
     })
   };
 
-  // $scope.map = function() {
-  //   new google.maps.Map(document.getElementById('map'), {
-  //     center: {lat: -34.397, lng: 150.644},
-  //     zoom: 8
-  //   });
-  // }
-
-});
+})
+  .run(function (Auth, $state) {
+    console.log('token on run' , window.localStorage.getItem('token'));
+    if (window.localStorage.getItem('token') === null) {
+      // $state.reload();
+      console.log('token is null');
+      $state.go('app.login');
+    }
+  });
