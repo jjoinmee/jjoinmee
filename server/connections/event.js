@@ -32,21 +32,15 @@ module.exports = {
           duration: req.body.duration,
           address: req.body.address
         })
-        .then(function () {
-          db.eventID(req.body.inputTitle, req.body.Email, req.body.datetimeValue, req.body.duration, req.body.address)
-            .then(function (data) {
-              return data;
-            }).then(function (data) {
-            console.log('data inside eventid: ', data);
+        .then(function (firstData) {
+          console.log('firstData' , firstData[0]);
             knex('users_events').insert({
-              EventID: data,
+              EventID: firstData[0],
               UserId: knex('users').where({Email: req.body.Email}).select('id')
             })
-          }).then(function () {
-            res.send('event added');
-          });
-
-          // res.send('Event added.');
+            .then(function () {
+              res.send('event added');
+            });
         });
     }
   }
