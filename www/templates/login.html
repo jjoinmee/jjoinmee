@@ -27,13 +27,14 @@
         </button>
       </div>
 
-      <div class="card" ng-show="isLoggedIn" ng-click="logout()">
+      <div class="card" ng-show="isLoggedIn">
         <div class="item item-text-wrap">
-          Hello {{data.facebook.displayName}}!
-          <button type="item">
-            Log Out
-          </button>
+          Hello {{ displayName }}!
+
         </div>
+        <button class="item" ng-click="logout()">
+          Log Out
+        </button>
       </div>
 
     </ion-content>

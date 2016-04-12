@@ -52,6 +52,27 @@ angular.module('jauntly.services', [])
     isSignedIn: isSignedIn
   }
 
+})
+
+.factory("FB", function($http, Auth) {
+  var postEmail = function (email) {
+    return $http.post('/api/users/users/', email);
+  }
+  return {
+    postEmail: postEmail
+  }
+})
+
+.factory("Event", function($http) {
+  var getAllEvents = function(email) {
+    var plugin = {Email: email};
+    console.log('email: ', email);
+    return $http.get('/api/events/events', plugin);
+  }
+
+  return {
+    getAllEvents: getAllEvents
+  }
 });
 
 
