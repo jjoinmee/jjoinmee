@@ -16,19 +16,15 @@ module.exports = {
     get: function (req, res) {
       //want to get one user
       console.log(req);
-      knex('users').where('Username',req.query.Username).then(function(data){
+      knex('users').where('Username', req.query.Username).then(function (data) {
         res.send(data);
       });
     },
-    post: function (req,res) {
-      knex('users').insert({
-        FirstName: req.query.FirstName,
-        LastName: req.query.LastName,
-        Username: req.query.Username,
-        Email: req.query.Email
-      }).then(function(){
-        res.send('User added.');
-      });
+    post: function (req, res) {
+      knex('users').where({Email: req.body.Email}).select('id')
+        .then(function (data) {
+          res.send(data);
+        })
     }
   }
-};
+}

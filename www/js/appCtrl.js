@@ -9,9 +9,10 @@ angular.module('jauntly.appCtrl', [])
 
   $scope.login = function() {
     console.log('calling facebook auth');
-    Auth.auth.$authWithOAuthPopup('facebook')
+    Auth.auth.$authWithOAuthPopup('facebook', {remember: "sessionOnly", scope: "email"})
       .then(function(authData) {
         Auth.authData = authData;
+        console.log('authData ', authData);
         $scope.data = authData;
         window.localStorage.setItem('token', $scope.data.token);
         window.localStorage.setItem('displayName', $scope.data.facebook.displayName);
