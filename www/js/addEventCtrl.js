@@ -30,14 +30,19 @@ angular.module('jauntly.addEventCtrl', [])
   $scope.clickInfo = function (result) {
     $scope.inputTitle = result.title;
     $scope.inputAddress = result.latLng;
+    $scope.duration = result.duration;
   };
 
   $scope.getAddress = function (latlng) {
     GoogleGeocodeInfo.getAddress(latlng)
     .then(function (address) {
       $scope.address = address.data.results[0].formatted_address;
-      console.log($scope.address);
     })
+  };
+
+  $scope.getDateTime = function () {
+    $scope.datetimeValue = new Date();
+    console.log($scope.datetimeValue);
   };
 
 })

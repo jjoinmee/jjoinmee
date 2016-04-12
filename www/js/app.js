@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl'])
+angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl'])
 
 .factory('ParentFactory', function() {
   var loggedIn = false;
