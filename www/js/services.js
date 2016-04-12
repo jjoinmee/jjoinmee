@@ -77,9 +77,23 @@ angular.module('jauntly.services', [])
     return $http.post('/api/events/events', data);
   }
 
+  var getMyEvents = function (data) {
+    console.log('before post getmyevents');
+    console.log('post data for my events', data);
+    // var plugin = {Email: data};
+    return $http.get('/api/events/events');
+  }
+
+  var getMyID = function (data) {
+    var plugin = {Email: data}
+    return $http.post('/api/users/users', plugin);
+  }
+
   return {
     getAllEvents: getAllEvents,
-    submitEvent: submitEvent
+    submitEvent: submitEvent,
+    getMyEvents: getMyEvents,
+    getMyID: getMyID
   }
 });
 

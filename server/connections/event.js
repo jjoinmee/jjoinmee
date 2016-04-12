@@ -16,11 +16,18 @@ module.exports = {
   events: {
     get: function (req, res) {
       //want to get one user
-      console.log(req);
-      knex('users').where({Email: req.body.Username}).select('id').then(function (data) {
-        knex('events').where({'userId': data[0].id}).select('EventName').then(function (data) {
-          res.send(data);
-        });
+      // knex('events').where({Email: req.body.Username}).select('*').then(function (data) {
+      //   knex('events').where({'userId': data[0].id}).select('EventName').then(function (data) {
+      //     res.send(data);
+      //   });
+      // });
+      // console.log('request email: ', req);
+      // knex('users').where({Email: req.Email}).select('id').then(function(data) {
+      //   res.send(data);
+      // })
+      // console.log('inside GET my events');
+      knex('events').select('*').then(function(data) {
+        res.send(data);
       });
     },
     post: function (req, res) {
@@ -38,8 +45,8 @@ module.exports = {
               EventID: firstData[0],
               UserId: knex('users').where({Email: req.body.Email}).select('id')
             })
-            .then(function () {
-              res.send('event added');
+            .then(function (data) {
+              res.send(data);
             });
         });
     }
