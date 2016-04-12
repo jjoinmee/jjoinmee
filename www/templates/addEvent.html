@@ -2,24 +2,27 @@
   <ion-content>
     <h1>Add Event</h1>
 
-    <div class="list">
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Event Name</span>
-        <input type="text" placeholder="event name" value="{{ inputTitle }}">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Location</span>
-        <input type="text" placeholder ="location" value="{{ address }}">
-      </label>
-      <label class="item item-input item-stacked-label" ion-datetime-picker am-pm ng-model="datetimeValue">
-        <span class="input-label">Date and Time</span>
-        <input type="text" placeholder="date and time" value = "{{ datetimeValue | date: "yyyy-MM-dd h:mm:ss a" }}" ng-submit="getDateTime()" ng-model="datetimeValue">
-      </label>
-      <label class="item item-input item-stacked-label">
-        <span class="input-label">Duration</span>
-        <input type="text" placeholder="duration" value = "{{ duration }}">
-      </label>
-    </div>
+    <form ng-submit="postEvent(inputTitle, address, datetimeValue, duration)">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Event Name</span>
+          <input type="text" placeholder="event name" value="{{ inputTitle }}" ng-model="inputTitle">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Location</span>
+          <input type="text" placeholder ="location" value="{{ address }}" ng-model="address">
+        </label>
+        <label class="item item-input item-stacked-label" ion-datetime-picker am-pm ng-model="datetimeValue">
+          <span class="input-label">Date and Time</span>
+          <input type="text" placeholder="date and time" value = "{{ datetimeValue | date: "yyyy-MM-dd h:mm:ss a" }}" ng-submit="getDateTime()" ng-model="datetimeValue">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Duration</span>
+          <input type="text" placeholder="duration" value = "{{ duration }}" ng-model="duration">
+        </label>
+      </div>
+      <button type="submit" class="button icon-right ion-chevron-right button-calm">Submit</button>
+    </form>
 
     <form class="item-input">
       <input type="text" ng-model="location" placeholder="location">

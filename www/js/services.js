@@ -56,7 +56,9 @@ angular.module('jauntly.services', [])
 
 .factory("FB", function($http, Auth) {
   var postEmail = function (email) {
-    return $http.post('/api/users/users/', email);
+    var plugin = {Email: email}
+    console.log(plugin);
+    return $http.post('/api/login', plugin);
   }
   return {
     postEmail: postEmail
@@ -64,10 +66,14 @@ angular.module('jauntly.services', [])
 })
 
 .factory("Event", function($http) {
-  var getAllEvents = function(email) {
+  var getAllEvents = function (email) {
     var plugin = {Email: email};
     console.log('email: ', email);
     return $http.get('/api/events/events', plugin);
+  }
+
+  var submitEvent = function (data) {
+    console.log(data);
   }
 
   return {

@@ -24,12 +24,11 @@ module.exports = {
     },
     post: function (req,res) {
       knex('events').insert({
-        EventName: req.query.EventName,
-        userId: knex('users').where({Username: req.query.Username}).select('id'),
-        EventTime: req.query.EventTime,
-        EventDuration: req.query.EventDuration,
-        EventDate: req.query.EventDate,
-        Location: req.query.Location
+        inputTitle: req.query.inputTitle,
+        userId: knex('users').where({Email: req.query.Email}).select('id'),
+        datetimeValue: req.query.datetimeValue,
+        duration: req.query.duration,
+        address: req.query.address
       }).then(function(){
         res.send('Event added.');
       });
