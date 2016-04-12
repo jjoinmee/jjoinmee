@@ -14,12 +14,17 @@ angular.module('jauntly.appCtrl', [])
         Auth.authData = authData;
         $scope.data = authData;
         window.localStorage.setItem('token', $scope.data.token);
-        console.log(authData);
         window.localStorage.setItem('displayName', $scope.data.facebook.displayName);
         $scope.isLoggedIn = true;
         Auth.isSignedIn = true;
-        $state.reload();
-        FB.postEmail({Email: Auth.authData.facebook.email});
+        // $state.reload();
+        return Auth.authData;
+      })
+      .then(function(data) {
+        console.log('this should log', Auth.authData);
+        FB.postEmail(Auth.authData.facebook.email).then(function(data) {
+          console.log('inside fb post email');
+        });
       })
       .catch(function(error) {
         console.log('error getting facebook auth ', error);

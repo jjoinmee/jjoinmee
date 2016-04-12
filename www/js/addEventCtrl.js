@@ -1,6 +1,6 @@
 angular.module('jauntly.addEventCtrl', [])
 
-.controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth) {
+.controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth, Event) {
 
   // (function(){
   //   // console.log(!Auth.ref.getAuth().token);
@@ -44,6 +44,11 @@ angular.module('jauntly.addEventCtrl', [])
     $scope.datetimeValue = new Date();
     console.log($scope.datetimeValue);
   };
+
+  $scope.postEvent = function (inputTitle, address, datetimeValue, duration) {
+    console.log({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration});
+    // Event.submitEvent();
+  }
 
 })
   .run(function (Auth, $state) {
