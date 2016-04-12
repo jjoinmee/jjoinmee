@@ -19,6 +19,7 @@ knex.schema.createTableIfNotExists('users', function (user) {
   user.string('FirstName');
   user.string('LastName');
   user.string('Username');
+  user.string('Email');
 }).then(function() {
   console.log('users table created');
 });

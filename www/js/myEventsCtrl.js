@@ -1,11 +1,10 @@
 angular.module('jauntly.myEventsCtrl', [])
 
-.controller('myEventsCtrl', function ($scope, $state, Auth) {
-  (function(){
-    // console.log(!Auth.ref.getAuth().token);
-    if (window.localStorage.getItem('token') === null) {
-      $state.go('app.login', {});
-    }
-  })();
-})
-
+.controller('myEventsCtrl', function ($scope, $state, Auth, Event) {
+  $scope.data;
+  $scope.getEvents = function() {
+    Event.getAllEvents(Auth.authData.facebook.email).then(function(data) {
+      $scope.data = data;
+    })
+  }
+});

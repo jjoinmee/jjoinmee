@@ -24,7 +24,8 @@ module.exports = {
       knex('users').insert({
         FirstName: req.query.FirstName,
         LastName: req.query.LastName,
-        Username: req.query.Username
+        Username: req.query.Username,
+        Email: req.query.Email
       }).then(function(){
         res.send('User added.');
       });
