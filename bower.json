@@ -5,6 +5,7 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "oauth-js": "oauthio-web#^0.5.2"
+    "oauth-js": "oauthio-web#^0.5.2",
+    "ion-datetime-picker": "^0.1.2"
   }
 }
