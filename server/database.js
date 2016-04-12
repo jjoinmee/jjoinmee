@@ -68,6 +68,7 @@ User.addUser = function (email) {
   });
 };
 
+
 module.exports = {
   db: db,
   knex: knex,
