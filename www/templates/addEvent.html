@@ -30,7 +30,7 @@
       <button class="ng-hide" type="submit" ng-click="search(location, activity)">Submit</button>
     </form>
 
-    <div class="results item-input" ng-repeat="result in this.results | limitTo: 10">
+    <div class="results item-input" ng-repeat="result in this.results | limitTo: 15">
       <div class="info">
         <div class="title">{{ result.title }}</div>
         <div class="thumb"><img ng-click='clickInfo(result); getAddress(result.latLng)' ng-src="{{result.imageUrl}}"></div>
