@@ -9,6 +9,9 @@ var db = require('./database').User;
 var Event = require('./database').Event;
 var Unjoin = require('./database').Unjoin;
 
+// Require .env
+require('dotenv').config();
+
 app.use(express.static('./www'));
 
 // Use body parser
