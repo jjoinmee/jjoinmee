@@ -1,10 +1,12 @@
+require('dotenv').config();
+
 var knex = require('knex') ({
   client: 'mysql',
   connection: {
-    host: 'mysqlcluster16.registeredsite.com',
-    user: 'joinme',
-    password: '!Qaz2wsx',
-    database: 'joinme'
+    host: process.env.host,
+    user: process.env.user,
+    password: process.env.password,
+    database: process.env.database
   },
   pool: {
     min: 0,
