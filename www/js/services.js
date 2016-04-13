@@ -40,7 +40,7 @@ angular.module('jauntly.services', [])
 
 .factory("Auth", function($firebaseAuth) {
 
-  var ref = new Firebase("https://amber-fire-6746.firebaseio.com");
+  var ref = new Firebase(firebaseKey);
   var auth = $firebaseAuth(ref);
   var authData = null;
   var isSignedIn = false;
