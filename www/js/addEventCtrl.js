@@ -41,6 +41,7 @@ angular.module('jauntly.addEventCtrl', [])
     Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email})
       .then(function() {
         console.log('event added');
+        $state.go('app.myEvents');
       });
     // Event.submitEvent();
   }
