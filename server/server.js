@@ -67,6 +67,14 @@ apiRouter.route('/myevents/:event_id')
     })
   })
 
+  apiRouter.route('/joinevents')
+    .post(function(req, res) {
+      Event.join(req.body.eventID, req.body.userId)
+      .then(function(data) {
+        res.send(data);
+      })
+    })
+
 // app.post('/api/login', function(req, res) {
 //   var query = db('users').select('*').where({email: req.body.email});
 //   console.log('entering post', query);

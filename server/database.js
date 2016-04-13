@@ -98,6 +98,17 @@ Event.delete = function(id) {
   })
 }
 
+Event.join = function(eventID, userId) {
+  return new Promise(function(resolve) {
+    if (resolve) {
+      knex('users_events').insert({ eventID: eventID, userId: userId})
+      .then(function(data) {
+        resolve(data);
+      })
+    }
+  })
+}
+
 
 module.exports = {
   db: db,
