@@ -10,5 +10,18 @@
       <div>Address: {{data.address}}</div>
       <button type="submit" ng-click="deleteEvent(data.id)">DELETE</button>
     </div>
+
+    <h1>Events I Joined</h1>
+    <div ng-repeat="input in filtered track by $index" ng-if="input.userId !== id">
+      <div><img src="{{ input.imageUrl }}" alt=""></div>
+      <div>Event Name: {{input.inputTitle}}</div>
+      <div>Date/Time: {{input.datetimeValue}}</div>
+      <div>Duration: {{input.duration}}</div>
+      <div>Address: {{input.address}}</div>
+      <div>EventIDs: {{input.eventIDs}}</div>
+      <div>id: {{input.id}}</div>
+      <button type="submit" ng-click="unjoinEvent(input.id)">Unjoin</button>
+    </div>
+
   </ion-content>
 </ion-view>

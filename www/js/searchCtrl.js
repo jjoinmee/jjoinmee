@@ -22,7 +22,5 @@ angular.module('jauntly.searchCtrl', [])
     Event.postToJoint(eventID, $scope.myID);
   }
 
-
-
   $scope.getSearchResult();
 })

@@ -98,7 +98,7 @@ Event.delete = function(id) {
   })
 }
 
-Event.join = function(eventID, userId) {
+Event.join = function (eventID, userId) {
   return new Promise(function(resolve) {
     if (resolve) {
       knex('users_events').insert({ eventID: eventID, userId: userId})
@@ -109,10 +109,50 @@ Event.join = function(eventID, userId) {
   })
 }
 
+Event.getJoint = function (userId) {
+  return new Promise(function(resolve) {
+    if (resolve) {
+      knex('users_events').select('EventID').where({userId: userId}).then(function(data) {
+        resolve(data);
+      })
+      // knex('users_events').select('*').where({ userId: userId})
+      // .then(function(data) {
+      //   resolve(data);
+      // })
+    }
+  })
+}
+
+var Unjoin = {};
+
+Unjoin.get = function(id) {
+  return new Promise(function(resolve) {
+    if (resolve) {
+      knex('users_events').where('EventID', id).then(function(data) {
+        resolve(data);
+      })
+    }
+  })
+}
+
+Unjoin.delete = function(id) {
+  console.log('inside delete ', id);
+  return new Promise(function(resolve) {
+    if (resolve) {
+      console.log('inside resolve promise for delete');
+      knex('users_events').where('EventID', id).del()
+        .then(function() {
+          console.log('inside then function');
+          resolve(true);
+        })
+      }
+    })
+}
 
 module.exports = {
   db: db,
   knex: knex,
   User: User,
-  Event: Event
+  Event: Event,
+  Unjoin: Unjoin
 };

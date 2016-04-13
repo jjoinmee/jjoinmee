@@ -7,6 +7,7 @@ var eventRoute = require('./routes/eventRoute.js');
 var userRoute = require('./routes/userRoute.js');
 var db = require('./database').User;
 var Event = require('./database').Event;
+var Unjoin = require('./database').Unjoin;
 
 app.use(express.static('./www'));
 
@@ -20,8 +21,6 @@ app.use('/api', apiRouter);
 
 app.use('/api/events',eventRoute);
 app.use('/api/users', userRoute);
-
-
 
 // api routing for users
 apiRouter.route('/login')
@@ -67,13 +66,46 @@ apiRouter.route('/myevents/:event_id')
     })
   })
 
-  apiRouter.route('/joinevents')
-    .post(function(req, res) {
-      Event.join(req.body.eventID, req.body.userId)
-      .then(function(data) {
-        res.send(data);
-      })
+apiRouter.route('/joinevents')
+  .get(function(req, res) {
+    Event.getJoint(req.body.userId)
+  })
+
+  .post(function(req, res) {
+    Event.join(req.body.eventID, req.body.userId)
+    .then(function(data) {
+      res.send(data);
     })
+  })
+
+  apiRouter.route('/filterevents')
+  .post(function(req, res) {
+    console.log(req);
+    Event.getJoint(req.body.userId)
+    .then(function(data) {
+      res.send(data);
+    })
+  })
+
+apiRouter.route('/unjoinevent/:event_id')
+  .get(function(req, res) {
+    console.log('inside server.js get ', req.params.event_id);
+    Unjoin.get(req.params.event_id)
+    .then(function(data) {
+      res.send('get successful', data);
+    })
+  })
+
+  .delete(function(req, res) {
+    console.log('inside server.js delete ');
+    Unjoin.delete(req.params.event_id)
+    .then(function(deleted) {
+      if (deleted) {
+        console.log('deleted is true', deleted);
+        res.send('delete successful');
+      }
+    })
+  })
 
 // app.post('/api/login', function(req, res) {
 //   var query = db('users').select('*').where({email: req.body.email});
