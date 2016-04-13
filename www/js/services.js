@@ -94,12 +94,18 @@ angular.module('jauntly.services', [])
     return $http.post('/api/joinevents', plugin);
   }
 
+  var postID = function (userID) {
+    var plugin = {userId: userID};
+    return $http.post('/api/filterevents', plugin);
+  }
+
   return {
     getAllEvents: getAllEvents,
     submitEvent: submitEvent,
     getMyEvents: getMyEvents,
     getMyID: getMyID,
-    postToJoint: postToJoint
+    postToJoint: postToJoint,
+    postID: postID
   }
 });
 
