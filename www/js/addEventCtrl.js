@@ -42,6 +42,13 @@ angular.module('jauntly.addEventCtrl', [])
     console.log('imageUrl', imageUrl);
     Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email, imageUrl: imageUrl })
       .then(function() {
+        $scope.inputTitle = null;
+        $scope.duration = null;
+        $scope.imageUrl = null;
+        $scope.datetimeValue = null;
+        $scope.address = null;
+      })
+      .then(function() {
         console.log('event added');
         $state.go('app.myEvents');
       });

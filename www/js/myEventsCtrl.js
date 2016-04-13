@@ -1,6 +1,6 @@
 angular.module('jauntly.myEventsCtrl', [])
 
-.controller('myEventsCtrl', function ($scope, $state, Auth, Event) {
+.controller('myEventsCtrl', function ($http, $scope, $state, $ionicHistory, Auth, Event) {
   $scope.data;
   $scope.id;
   console.log('this is authdata email', Auth.authData.facebook.email);
@@ -17,6 +17,22 @@ angular.module('jauntly.myEventsCtrl', [])
       })
     })
   };
+
+  $scope.deleteEvent = function(id) {
+    $http({
+      method    : 'DELETE',
+      url       : 'http://localhost:8100/api/myevents/' + id,
+      data      : $scope.data,
+      headers   : {'Content-Type': 'application/json'}
+    })
+    .then(function(){
+      console.log('inside reload');
+      $state.go($state.current, {}, {reload: true, inherit: false});
+      // $ionicHistory.clearCache().then(function() {
+      //   $state.go('app.myEvents');
+      // })
+    })
+  }
 
   // $scope.getID = function () {
   //   Event.getMyID(Auth.authData.facebook.email).then(function(data) {
