@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var eventRoute = require('./routes/eventRoute.js');
 var userRoute = require('./routes/userRoute.js');
 var db = require('./database').User;
+var Event = require('./database').Event;
 
 app.use(express.static('./www'));
 
@@ -44,6 +45,26 @@ apiRouter.route('/login')
       }
     })
 
+  })
+
+apiRouter.route('/myevents/:event_id')
+  .get(function(req, res) {
+    console.log('inside server.js get ', req.params.event_id);
+    Event.get(req.params.event_id)
+    .then(function(data) {
+      res.send('get successful', data);
+    })
+  })
+
+  .delete(function(req, res) {
+    console.log('inside server.js delete ');
+    Event.delete(req.params.event_id)
+    .then(function(deleted) {
+      if (deleted) {
+        console.log('deleted is true', deleted);
+        res.send('delete successful');
+      }
+    })
   })
 
 // app.post('/api/login', function(req, res) {
