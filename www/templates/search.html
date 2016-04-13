@@ -4,11 +4,17 @@
     <div class="bar bar-header item-input-inset">
       <label class="item-input-wrapper">
         <i class="icon ion-ios-search placeholder-icon"></i>
-        <input type="search" placeholder="Search">
+        <input type="search" placeholder="Search" ng-model="search">
       </label>
-      <button class="button button-clear">
-        Cancel
-      </button>
+    </div>
+    <div ng-repeat="data in data | filter:search" ng-if="data.userId !== myID">
+      <div><img src="{{ data.imageUrl }}" alt=""></div>
+      <div>Event Name: {{data.inputTitle}}</div>
+      <div>Date/Time: {{data.datetimeValue}}</div>
+      <div>Duration: {{data.duration}}</div>
+      <div>Address: {{data.address}}</div>
+      <div>UID: {{data.userId}}</div>
+      <button type="submit" ng-click="joinEvent(data.id)">JOIN</button>
     </div>
   </ion-content>
 </ion-view>
