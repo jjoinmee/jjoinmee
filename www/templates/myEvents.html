@@ -3,6 +3,7 @@
     <h1>My Events</h1>
     <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
     <div ng-repeat="data in data" ng-if="data.userId === id">
+      <div><img src="{{ data.imageUrl }}" alt=""></div>
       <div>Event Name: {{data.inputTitle}}</div>
       <div>Date/Time: {{data.datetimeValue}}</div>
       <div>Duration: {{data.duration}}</div>

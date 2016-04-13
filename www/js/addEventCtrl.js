@@ -21,6 +21,7 @@ angular.module('jauntly.addEventCtrl', [])
     $scope.inputTitle = result.title;
     $scope.inputAddress = result.latLng;
     $scope.duration = result.duration;
+    $scope.imageUrl = result.imageUrl;
   };
 
   $scope.getAddress = function (latlng) {
@@ -35,10 +36,11 @@ angular.module('jauntly.addEventCtrl', [])
     console.log($scope.datetimeValue);
   };
 
-  $scope.postEvent = function (inputTitle, address, datetimeValue, duration) {
+  $scope.postEvent = function (inputTitle, address, datetimeValue, duration, imageUrl) {
     // $scope.email = Auth.authData.facebook.email;
     console.log('email: ', $scope.email);
-    Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email})
+    console.log('imageUrl', imageUrl);
+    Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email, imageUrl: imageUrl })
       .then(function() {
         console.log('event added');
         $state.go('app.myEvents');

@@ -9,6 +9,7 @@ angular.module('jauntly.myEventsCtrl', [])
     Event.getMyEvents(Auth.authData.facebook.email).then(function(data) {
       console.log('data inside getmine');
       $scope.data = data.data
+      console.log($scope.data);
     }).then(function() {
       Event.getMyID(Auth.authData.facebook.email).then(function(data) {
       $scope.id = data.data[0].id;

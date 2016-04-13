@@ -37,7 +37,8 @@ module.exports = {
           userId: knex('users').where({Email: req.body.Email}).select('id'),
           datetimeValue: req.body.datetimeValue,
           duration: req.body.duration,
-          address: req.body.address
+          address: req.body.address,
+          imageUrl: req.body.imageUrl
         })
         .then(function (firstData) {
           console.log('firstData' , firstData[0]);
