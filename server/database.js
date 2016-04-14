@@ -137,12 +137,11 @@ Unjoin.get = function(id) {
   })
 }
 
-Unjoin.delete = function(id) {
-  console.log('inside delete ', id);
+Unjoin.delete = function(eventid, userid) {
   return new Promise(function(resolve) {
     if (resolve) {
       console.log('inside resolve promise for delete');
-      knex('users_events').where('EventID', id).del()
+      knex('users_events').where({'EventID': eventid, 'UserId': userid}).del()
         .then(function() {
           console.log('inside then function');
           resolve(true);
