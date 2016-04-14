@@ -48,4 +48,13 @@ angular.module('jauntly.addEventCtrl', [])
         $state.go('app.myEvents');
       });
   }
+
+  $scope.clearFields = function () {
+    $scope.inputTitle = null;
+    $scope.duration = null;
+    $scope.imageUrl = null;
+    $scope.datetimeValue = null;
+    $scope.address = null;
+    $state.go($state.current, {}, {reload: true, inherit: false});
+  }
 });
