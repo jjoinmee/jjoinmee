@@ -1,16 +1,10 @@
 angular.module('jauntly.addEventCtrl', [])
 
-.controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth) {
-
-  (function(){
-    // console.log(!Auth.ref.getAuth().token);
-    if (Auth.ref.getAuth() === null) {
-      $state.go('app.login');
-    }
-  })();
+.controller('addEventCtrl', function ($scope, $state, ExpediaInfo, GoogleGeocodeInfo, Auth, Event) {
 
   $scope.results = {};
   $scope.address;
+  $scope.email = Auth.authData.facebook.email;
 
   $scope.search = function (location, activity) {
     ExpediaInfo.getExpInfo(location, activity)
@@ -26,21 +20,47 @@ angular.module('jauntly.addEventCtrl', [])
   $scope.clickInfo = function (result) {
     $scope.inputTitle = result.title;
     $scope.inputAddress = result.latLng;
+    $scope.duration = result.duration;
+    $scope.imageUrl = result.imageUrl;
   };
 
   $scope.getAddress = function (latlng) {
     GoogleGeocodeInfo.getAddress(latlng)
     .then(function (address) {
       $scope.address = address.data.results[0].formatted_address;
-      console.log($scope.address);
     })
   };
 
-  // $scope.map = function() {
-  //   new google.maps.Map(document.getElementById('map'), {
-  //     center: {lat: -34.397, lng: 150.644},
-  //     zoom: 8
-  //   });
-  // }
+  $scope.getDateTime = function () {
+    $scope.datetimeValue = new Date();
+    console.log($scope.datetimeValue);
+  };
 
-});
+  $scope.postEvent = function (inputTitle, address, datetimeValue, duration, imageUrl) {
+    // $scope.email = Auth.authData.facebook.email;
+    console.log('email: ', $scope.email);
+    console.log('imageUrl', imageUrl);
+    Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email, imageUrl: imageUrl })
+      .then(function() {
+        $scope.inputTitle = null;
+        $scope.duration = null;
+        $scope.imageUrl = null;
+        $scope.datetimeValue = null;
+        $scope.address = null;
+      })
+      .then(function() {
+        console.log('event added');
+        $state.go('app.myEvents');
+      });
+    // Event.submitEvent();
+  }
+
+})
+  .run(function (Auth, $state) {
+    console.log('token on run' , window.localStorage.getItem('token'));
+    if (window.localStorage.getItem('token') === null) {
+      // $state.reload();
+      console.log('token is null');
+      $state.go('app.login');
+    }
+  });

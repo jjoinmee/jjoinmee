@@ -2,5 +2,26 @@
   <ion-content>
     <h1>My Events</h1>
     <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+    <div ng-repeat="data in data" ng-if="data.userId === id">
+      <div><img src="{{ data.imageUrl }}" alt=""></div>
+      <div>Event Name: {{data.inputTitle}}</div>
+      <div>Date/Time: {{data.datetimeValue}}</div>
+      <div>Duration: {{data.duration}}</div>
+      <div>Address: {{data.address}}</div>
+      <button type="submit" ng-click="deleteEvent(data.id)">DELETE</button>
+    </div>
+
+    <h1>Events I Joined</h1>
+    <div ng-repeat="input in filtered track by $index" ng-if="input.userId !== id">
+      <div><img src="{{ input.imageUrl }}" alt=""></div>
+      <div>Event Name: {{input.inputTitle}}</div>
+      <div>Date/Time: {{input.datetimeValue}}</div>
+      <div>Duration: {{input.duration}}</div>
+      <div>Address: {{input.address}}</div>
+      <div>EventIDs: {{input.eventIDs}}</div>
+      <div>id: {{input.id}}</div>
+      <button type="submit" ng-click="unjoinEvent(input.id)">Unjoin</button>
+    </div>
+
   </ion-content>
 </ion-view>

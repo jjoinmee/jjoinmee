@@ -5,6 +5,7 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "bookshelf": "^0.9.4",
+    "dotenv": "^2.0.0",
     "express": "^4.13.4",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.2.0",
@@ -20,16 +21,4 @@
     "gulp-util": "^2.2.14",
     "shelljs": "^0.3.0"
   },
-  "cordovaPlugins": [
-    "cordova-plugin-device",
-    "cordova-plugin-console",
-    "cordova-plugin-whitelist",
-    "cordova-plugin-splashscreen",
-    "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard",
-    "cordova-plugin-inappbrowser"
-  ],
-  "cordovaPlatforms": [
-    "ios"
-  ]
 }

@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl'])
+angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl', 'jauntly.searchCtrl'])
 
 .factory('ParentFactory', function() {
   var loggedIn = false;
@@ -28,6 +28,7 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
   });
 })
 
@@ -35,6 +36,7 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+
 
   .state('app', {
     url: '/app',
@@ -47,7 +49,14 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
     url: '/search',
     views: {
       'menuContent': {
-        templateUrl: 'templates/search.html'
+        templateUrl: 'templates/search.html',
+        controller: 'searchCtrl'
+      }
+    },
+    resolve: {
+      auth: function (Auth) {
+        console.log('this is the Auth factory ', Auth);
+        return Auth.auth.$requireAuth();
       }
     }
   })
@@ -63,13 +72,20 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
   })
 
   .state('app.myEvents', {
+      cache: false,
       url: '/myevents',
       views: {
         'menuContent': {
           templateUrl: 'templates/myEvents.html',
           controller: 'myEventsCtrl'
         }
+      },
+    resolve: {
+      auth: function (Auth) {
+        console.log('this is the Auth factory ', Auth);
+        return Auth.auth.$requireAuth();
       }
+    }
     })
     .state('app.addEvent', {
       url: '/addevent',
@@ -78,18 +94,25 @@ angular.module('jauntly', ['ionic', 'firebase', 'jauntly.services', 'jauntly.app
           templateUrl: 'templates/addEvent.html',
           controller: 'addEventCtrl'
         }
+      },
+      resolve: {
+        auth: function (Auth) {
+          console.log('this is the Auth factory ', Auth);
+          return Auth.auth.$requireAuth();
+        }
       }
     });
 
-  // .state('app.single', {
-  //   url: '/playlists/:playlistId',
-  //   views: {
-  //     'menuContent': {
-  //       templateUrl: 'templates/playlist.html',
-  //       controller: 'PlaylistCtrl'
-  //     }
-  //   }
-  // });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/myevents');
-});
+  $urlRouterProvider.otherwise('/app/login');
+})
+
+.run(["$rootScope", "$state", function($rootScope, $state) {
+  $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+   // We can catch the error thrown when the $requireAuth promise is rejected
+   // and redirect the user back to the home page
+   if (error === "AUTH_REQUIRED") {
+     $state.go("app.login");
+   }
+  });
+}]);
