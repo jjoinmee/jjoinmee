@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+
+// Database connection
 var knex = require('knex') ({
   client: 'mysql',
   connection: {
@@ -14,6 +16,8 @@ var knex = require('knex') ({
   }
 });
 
+
+// Schema
 knex.schema.createTableIfNotExists('users', function (user) {
   user.increments('id').primary();
   user.string('Email');

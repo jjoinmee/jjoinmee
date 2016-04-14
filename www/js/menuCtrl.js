@@ -9,4 +9,4 @@ angular.module('jauntly.menuCtrl', [])
     }
   }
 
-})
+});

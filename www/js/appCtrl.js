@@ -1,6 +1,5 @@
 angular.module('jauntly.appCtrl', [])
 
-
 .controller('AppCtrl', function($scope, $state, Auth, ParentFactory, $timeout, FB) {
   
   $scope.isLoggedIn = false;
@@ -27,8 +26,6 @@ angular.module('jauntly.appCtrl', [])
         console.log('error getting facebook auth ', error);
       })
   };
-
-
 
   $scope.logout = function () {
     Auth.ref.unauth();
