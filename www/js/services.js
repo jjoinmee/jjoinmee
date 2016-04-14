@@ -109,18 +109,18 @@ angular.module('jauntly.services', [])
     var plugin = {userId: userID};
     return $http.post('/api/filterevents', plugin);
   }
-  
+
   var deleteEvent = function (id) {
     var params = {id: id};
     var config = {params: params};
-    var url = 'http://localhost:8100/api/myevents/' + id;
+    var url = '/api/myevents/' + id;
     return $http.delete(url, config);
   }
-  
+
   var unjoinEvent = function(eventid, userid) {
     var params= {EventID: eventid, UserId: userid};
     var config = {params: params};
-    var url = 'http://localhost:8100/api/unjoinevent/' + eventid;
+    var url = '/api/unjoinevent/' + eventid;
     console.log(url, params);
     return $http.delete(url, config);
   }
