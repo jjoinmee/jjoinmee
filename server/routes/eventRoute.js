@@ -1,4 +1,4 @@
-var controllers = require('../connections/event.js');
+var controllers = require('../collections/event.js');
 var router = require('express').Router();
 
 for (var route in controllers) {

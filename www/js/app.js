@@ -47,6 +47,7 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
   })
 
   .state('app.search', {
+    cache: false,
     url: '/search',
     views: {
       'menuContent': {

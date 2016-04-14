@@ -34,19 +34,7 @@ angular.module('jauntly.services', [])
     var config = {params: params};
     return $http.get('https://maps.googleapis.com/maps/api/geocode/json', config);
   };
-
-  //
-  // var getAddress = function (latlng) {
-  //   return $http({
-  //     method      : 'GET',
-  //     contentType : 'application/json',
-  //     params      : {
-  //       latlng : latlng,
-  //       key    : googleMapsApiKey
-  //     },
-  //     url         : 'https://maps.googleapis.com/maps/api/geocode/json'
-  //   })
-  // };
+  
 
   return {
     getAddress : getAddress
@@ -74,7 +62,7 @@ angular.module('jauntly.services', [])
 .factory("FB", function($http) {
   var postEmail = function (email) {
     var plugin = {Email: email};
-    return $http.post('/api/login', plugin);
+    return $http.post('/api/login/user', plugin);
   }
   return {
     postEmail: postEmail
@@ -96,18 +84,18 @@ angular.module('jauntly.services', [])
   }
 
   var getMyID = function (data) {
-    var plugin = {Email: data}
+    var plugin = {Email: data};
     return $http.post('/api/users/users', plugin);
   }
 
   var postToJoint = function (eventID, userID) {
     var plugin = {eventID: eventID, userId: userID};
-    return $http.post('/api/joinevents', plugin);
+    return $http.post('/api/join/events', plugin);
   }
 
   var postID = function (userID) {
     var plugin = {userId: userID};
-    return $http.post('/api/filterevents', plugin);
+    return $http.post('/api/filter/events', plugin);
   }
 
   var deleteEvent = function (id) {

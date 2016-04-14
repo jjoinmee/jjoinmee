@@ -1,10 +1,10 @@
-var controllers = require('../collections/user.js');
+var controllers = require('../collections/myEvents.js');
 var router = require('express').Router();
 
 for (var route in controllers) {
 
   router.route("/" + route)
-    .get(controllers[route].get).post(controllers[route].post);
+    .get(controllers[route].get).delete(controllers[route].delete);
 }
 
 module.exports = router;

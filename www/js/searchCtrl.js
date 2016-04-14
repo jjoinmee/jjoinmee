@@ -7,6 +7,7 @@ angular.module('jauntly.searchCtrl', [])
   $scope.getSearchResult = function() {
   Event.getMyEvents(Auth.authData.facebook.email).then(function(data) {
     $scope.data = data.data
+    console.log('reload data');
   }).then(function() {
       Event.getMyID(Auth.authData.facebook.email).then(function(data) {
       $scope.myID = data.data[0].id;
@@ -17,6 +18,6 @@ angular.module('jauntly.searchCtrl', [])
   $scope.joinEvent = function(eventID) {
     Event.postToJoint(eventID, $scope.myID);
   }
-
+  
   $scope.getSearchResult();
 })
