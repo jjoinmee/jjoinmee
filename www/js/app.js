@@ -1,13 +1,5 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl', 'jauntly.searchCtrl'])
 
-
-//check to see where this is in use. we need this.
 .factory('ParentFactory', function() {
   var loggedIn = false;
   return {
@@ -18,15 +10,12 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
 
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
 
     }
     if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
 
@@ -34,7 +23,6 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
 })
 
 // Client side UI-Routing
-
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
@@ -43,7 +31,6 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html'
-    // controller: 'AppCtrl'
   })
 
   .state('app.search', {
@@ -57,7 +44,6 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
     },
     resolve: {
       auth: function (Auth) {
-        console.log('this is the Auth factory ', Auth);
         return Auth.auth.$requireAuth();
       }
     }
@@ -84,12 +70,12 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
       },
     resolve: {
       auth: function (Auth) {
-        console.log('this is the Auth factory ', Auth);
         return Auth.auth.$requireAuth();
       }
     }
     })
     .state('app.addEvent', {
+      cache: false,
       url: '/addevent',
       views: {
         'menuContent': {
@@ -99,13 +85,11 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
       },
       resolve: {
         auth: function (Auth) {
-          console.log('this is the Auth factory ', Auth);
           return Auth.auth.$requireAuth();
         }
       }
     });
 
-  // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/login');
 })
 

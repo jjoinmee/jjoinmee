@@ -1,9 +1,8 @@
 var express = require('express');
 var Event = require('../helpers/event');
-
 var bodyParser = require('body-parser');
-
 var app = express();
+
 app.use(bodyParser());
 
 module.exports = {
