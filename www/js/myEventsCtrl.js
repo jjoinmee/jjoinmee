@@ -10,13 +10,16 @@ angular.module('jauntly.myEventsCtrl', [])
   $scope.getMine = function() {
     Event.getMyEvents(Auth.authData.facebook.email).then(function(data) {
       $scope.data = data.data
-    }).then(function() {
+    })
+      .then(function() {
       Event.getMyID(Auth.authData.facebook.email).then(function(data) {
       $scope.id = data.data[0].id;
-      }).then(function() {
+      })
+        .then(function() {
       Event.postID($scope.id).then(function(data) {
       $scope.eventIDs = data.data;
-      }).then(function () {
+      })
+        .then(function () {
         for (var i = 0; i < $scope.data.length; i++) {
           for (var j = 0; j < $scope.eventIDs.length; j++) {
             if ($scope.data[i].id === $scope.eventIDs[j].EventID) {
@@ -29,28 +32,23 @@ angular.module('jauntly.myEventsCtrl', [])
     })
   };
 
-
   $scope.deleteEvent = function(id) {
     Event.deleteEvent(id).then(function() {
       $state.go($state.current, {}, {reload: true, inherit: false});
       console.log('event deleted');
     })
-  }
-
-
-
+  };
+  
   $scope.sendIDToDB = function () {
     console.log($scope.id);
-  }
-
-
+  };
+  
   $scope.unjoinEvent = function(eventid) {
     Event.unjoinEvent(eventid, $scope.id).then(function() {
       $state.go($state.current, {}, {reload: true, inherit: false});
       console.log('event unjoined');
     });
-  }
+  };
 
   $scope.getMine();
-
-})
+});

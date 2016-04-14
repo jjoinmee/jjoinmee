@@ -1,9 +1,8 @@
 var express = require('express');
 var knex = require('../database').knex;
-
 var bodyParser = require('body-parser');
-
 var app = express();
+
 app.use(bodyParser());
 
 module.exports = {
@@ -14,7 +13,6 @@ module.exports = {
       });
     },
     post: function (req, res) {
-      console.log('inside api post', req);
       knex('events').insert({
           inputTitle: req.body.inputTitle,
           userId: knex('users').where({Email: req.body.Email}).select('id'),
@@ -24,7 +22,6 @@ module.exports = {
           imageUrl: req.body.imageUrl
         })
         .then(function (firstData) {
-          console.log('firstData' , firstData[0]);
             knex('users_events').insert({
               EventID: firstData[0],
               UserId: knex('users').where({Email: req.body.Email}).select('id')
@@ -35,4 +32,4 @@ module.exports = {
         });
     }
   }
-}
+};

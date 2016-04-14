@@ -48,5 +48,4 @@ angular.module('jauntly.addEventCtrl', [])
         $state.go('app.myEvents');
       });
   }
-
 });

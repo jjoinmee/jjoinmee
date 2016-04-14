@@ -8,11 +8,13 @@ var userRoute = require('./routes/userRoute.js');
 var unjoinRoute = require('./routes/unjoinEventsRoute.js');
 var loginRoute = require('./routes/loginRoute.js');
 var myEventsRoute = require('./routes/myEventsRoute.js');
-var joinRoute = require('./routes/joinEventsRoute.js')
+var joinRoute = require('./routes/joinEventsRoute.js');
 
 // Require .env
 require('dotenv').config();
 
+
+// Serve client files
 app.use(express.static('./www'));
 
 // Use body parser
@@ -20,6 +22,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+// Routes
 app.use('/api/events/',eventRoute);
 app.use('/api/users/', userRoute);
 app.use('/api/unjoinevent', unjoinRoute);
