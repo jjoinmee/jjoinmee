@@ -10,7 +10,6 @@ angular.module('jauntly.addEventCtrl', [])
     ExpediaInfo.getExpInfo(location, activity)
     .then(function (results) {
       $scope.results = results.data.activities;
-      console.log('ajax get results ', $scope.results);
     })
     .catch(function (error) {
       console.error(error);
@@ -33,13 +32,9 @@ angular.module('jauntly.addEventCtrl', [])
 
   $scope.getDateTime = function () {
     $scope.datetimeValue = new Date();
-    console.log($scope.datetimeValue);
   };
 
   $scope.postEvent = function (inputTitle, address, datetimeValue, duration, imageUrl) {
-    // $scope.email = Auth.authData.facebook.email;
-    console.log('email: ', $scope.email);
-    console.log('imageUrl', imageUrl);
     Event.submitEvent({inputTitle: inputTitle, address: address, datetimeValue: datetimeValue, duration: duration, Email: $scope.email, imageUrl: imageUrl })
       .then(function() {
         $scope.inputTitle = null;
@@ -52,15 +47,6 @@ angular.module('jauntly.addEventCtrl', [])
         console.log('event added');
         $state.go('app.myEvents');
       });
-    // Event.submitEvent();
   }
 
-})
-  .run(function (Auth, $state) {
-    console.log('token on run' , window.localStorage.getItem('token'));
-    if (window.localStorage.getItem('token') === null) {
-      // $state.reload();
-      console.log('token is null');
-      $state.go('app.login');
-    }
-  });
+});

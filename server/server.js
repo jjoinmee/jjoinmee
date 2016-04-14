@@ -92,7 +92,9 @@ apiRouter.route('/joinevents')
 
 apiRouter.route('/unjoinevent/:event_id')
   .get(function(req, res) {
-    console.log('inside server.js get ', req.params.event_id);
+    console.log('req', req.params);
+    console.log('req body', req.body);
+    // console.log('inside server.js get ', req.params.event_id);
     Unjoin.get(req.params.event_id)
     .then(function(data) {
       res.send('get successful', data);
@@ -101,7 +103,8 @@ apiRouter.route('/unjoinevent/:event_id')
 
   .delete(function(req, res) {
     console.log('inside server.js delete ');
-    Unjoin.delete(req.params.event_id)
+    console.log('req: ', req.query);
+    Unjoin.delete(req.query.EventID, req.query.UserId)
     .then(function(deleted) {
       if (deleted) {
         console.log('deleted is true', deleted);
