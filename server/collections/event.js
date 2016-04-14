@@ -1,11 +1,5 @@
 var express = require('express');
-var router = express.Router();
-var User = require('../models/userModel');
 var knex = require('../database').knex;
-var Users = require('../collections/userCollection');
-var Event = require('../models/eventModel');
-var Events = require('../collections/eventCollection');
-var db = require('../database').Events
 
 var bodyParser = require('body-parser');
 
@@ -15,17 +9,6 @@ app.use(bodyParser());
 module.exports = {
   events: {
     get: function (req, res) {
-      //want to get one user
-      // knex('events').where({Email: req.body.Username}).select('*').then(function (data) {
-      //   knex('events').where({'userId': data[0].id}).select('EventName').then(function (data) {
-      //     res.send(data);
-      //   });
-      // });
-      // console.log('request email: ', req);
-      // knex('users').where({Email: req.Email}).select('id').then(function(data) {
-      //   res.send(data);
-      // })
-      // console.log('inside GET my events');
       knex('events').select('*').then(function(data) {
         res.send(data);
       });
