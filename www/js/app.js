@@ -6,6 +6,8 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl', 'jauntly.searchCtrl'])
 
+
+//check to see where this is in use. we need this.
 .factory('ParentFactory', function() {
   var loggedIn = false;
   return {
@@ -15,7 +17,6 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    // OAuth.initialize(fbAppKey);
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)

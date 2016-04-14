@@ -1,19 +1,21 @@
 angular.module('jauntly.services', [])
 
 .factory('ExpediaInfo', function ($http) {
+
   var getExpInfo = function (location, activity) {
-    return $http({
-      method      : 'GET',
-      contentType : 'application/json',
-      params      : {
-        location   : location,
-        activity   : activity,
-        apikey     : expKey,
-        limitTo    : 5
-      },
-      url         : 'http://terminal2.expedia.com/x/activities/search'
-    })
+
+    var params = {
+      location: location,
+      activity: activity,
+      apikey: expKey,
+      limitTo: 5
+    };
+
+    var config = {params: params};
+    return $http.get('http://terminal2.expedia.com/x/activities/search', config);
   };
+
+
   return {
     getExpInfo : getExpInfo
   };
@@ -21,17 +23,31 @@ angular.module('jauntly.services', [])
 
 
 .factory('GoogleGeocodeInfo', function ($http) {
+
   var getAddress = function (latlng) {
-    return $http({
-      method      : 'GET',
-      contentType : 'application/json',
-      params      : {
-        latlng : latlng,
-        key    : googleMapsApiKey
-      },
-      url         : 'https://maps.googleapis.com/maps/api/geocode/json'
-    })
+
+    var params = {
+      latlng: latlng,
+      key: googleMapsApiKey
+    };
+
+    var config = {params: params};
+    return $http.get('https://maps.googleapis.com/maps/api/geocode/json', config);
   };
+
+  //
+  // var getAddress = function (latlng) {
+  //   return $http({
+  //     method      : 'GET',
+  //     contentType : 'application/json',
+  //     params      : {
+  //       latlng : latlng,
+  //       key    : googleMapsApiKey
+  //     },
+  //     url         : 'https://maps.googleapis.com/maps/api/geocode/json'
+  //   })
+  // };
+
   return {
     getAddress : getAddress
   };
@@ -39,6 +55,7 @@ angular.module('jauntly.services', [])
 
 
 .factory("Auth", function($firebaseAuth) {
+
 
   var ref = new Firebase(firebaseKey);
   var auth = $firebaseAuth(ref);
@@ -54,10 +71,9 @@ angular.module('jauntly.services', [])
 
 })
 
-.factory("FB", function($http, Auth) {
+.factory("FB", function($http) {
   var postEmail = function (email) {
-    var plugin = {Email: email}
-    console.log(plugin);
+    var plugin = {Email: email};
     return $http.post('/api/login', plugin);
   }
   return {
@@ -68,19 +84,14 @@ angular.module('jauntly.services', [])
 .factory("Event", function($http) {
   var getAllEvents = function (email) {
     var plugin = {Email: email};
-    console.log('email: ', email);
     return $http.get('/api/events/events', plugin);
   }
 
   var submitEvent = function (data) {
-    console.log('inside submit', data);
     return $http.post('/api/events/events', data);
   }
 
-  var getMyEvents = function (data) {
-    console.log('before post getmyevents');
-    console.log('post data for my events', data);
-    // var plugin = {Email: data};
+  var getMyEvents = function () {
     return $http.get('/api/events/events');
   }
 
@@ -98,6 +109,21 @@ angular.module('jauntly.services', [])
     var plugin = {userId: userID};
     return $http.post('/api/filterevents', plugin);
   }
+  
+  var deleteEvent = function (id) {
+    var params = {id: id};
+    var config = {params: params};
+    var url = 'http://localhost:8100/api/myevents/' + id;
+    return $http.delete(url, config);
+  }
+  
+  var unjoinEvent = function(eventid, userid) {
+    var params= {EventID: eventid, UserId: userid};
+    var config = {params: params};
+    var url = 'http://localhost:8100/api/unjoinevent/' + eventid;
+    console.log(url, params);
+    return $http.delete(url, config);
+  }
 
   return {
     getAllEvents: getAllEvents,
@@ -105,7 +131,9 @@ angular.module('jauntly.services', [])
     getMyEvents: getMyEvents,
     getMyID: getMyID,
     postToJoint: postToJoint,
-    postID: postID
+    postID: postID,
+    unjoinEvent: unjoinEvent,
+    deleteEvent: deleteEvent
   }
 });
 
