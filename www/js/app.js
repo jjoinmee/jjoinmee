@@ -1,5 +1,5 @@
 angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.services', 'jauntly.appCtrl', 'jauntly.addEventCtrl', 'jauntly.menuCtrl', 'jauntly.myEventsCtrl', 'jauntly.searchCtrl'])
-  
+
 .factory('ParentFactory', function() {
   var loggedIn = false;
   return {
@@ -9,7 +9,7 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    
+
     if (window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
@@ -44,7 +44,6 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
     },
     resolve: {
       auth: function (Auth) {
-        console.log('this is the Auth factory ', Auth);
         return Auth.auth.$requireAuth();
       }
     }
@@ -71,12 +70,12 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
       },
     resolve: {
       auth: function (Auth) {
-        console.log('this is the Auth factory ', Auth);
         return Auth.auth.$requireAuth();
       }
     }
     })
     .state('app.addEvent', {
+      cache: false,
       url: '/addevent',
       views: {
         'menuContent': {
@@ -86,12 +85,11 @@ angular.module('jauntly', ['ionic', 'ion-datetime-picker', 'firebase', 'jauntly.
       },
       resolve: {
         auth: function (Auth) {
-          console.log('this is the Auth factory ', Auth);
           return Auth.auth.$requireAuth();
         }
       }
     });
-  
+
   $urlRouterProvider.otherwise('/app/login');
 })
 
