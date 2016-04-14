@@ -1,4 +1,4 @@
-var controllers = require('../collections/user.js');
+var controllers = require('../collections/joinEvents.js');
 var router = require('express').Router();
 
 for (var route in controllers) {
