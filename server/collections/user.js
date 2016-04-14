@@ -1,15 +1,13 @@
 var express = require('express');
 var knex = require('../database').knex;
-
 var bodyParser = require('body-parser');
-
 var app = express();
+
 app.use(bodyParser());
 
 module.exports = {
   users: {
     get: function (req, res) {
-      console.log(req);
       knex('users').where('Username', req.query.Username).then(function (data) {
         res.send(data);
       });
@@ -21,4 +19,4 @@ module.exports = {
         })
     }
   }
-}
+};

@@ -1,5 +1,4 @@
 var knex = require('../database').knex;
-
 var Unjoin = {};
 
 Unjoin.get = function(id) {
@@ -10,19 +9,17 @@ Unjoin.get = function(id) {
       })
     }
   })
-}
+};
 
 Unjoin.delete = function(eventid, userid) {
   return new Promise(function(resolve) {
     if (resolve) {
-      console.log('inside resolve promise for delete');
       knex('users_events').where({'EventID': eventid, 'UserId': userid}).del()
         .then(function() {
-          console.log('inside then function');
           resolve(true);
         })
     }
   })
-}
+};
 
 module.exports = Unjoin;
