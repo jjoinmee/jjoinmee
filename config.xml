@@ -50,4 +50,4 @@
     <plugin name="cordova-plugin-device" spec="~1.1.1" />
     <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
 </widget>
-<allow-navigation href="http://*/*" />
+
