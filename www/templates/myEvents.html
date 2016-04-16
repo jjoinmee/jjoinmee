@@ -8,6 +8,12 @@
       <div>Date/Time: {{data.datetimeValue}}</div>
       <div>Duration: {{data.duration}}</div>
       <div>Address: {{data.address}}</div>
+      <button ng-click="showMap = ! showMap">Show Map</button>
+      <ng-map zoom="15" center="{{ data.latlng }}" style="height: 400px; width: 400px; display: block;" ng-show="showMap">
+        <marker position="{{ data.latlng }}" />
+        <shape name="circle" radius="100" center="{{ data.latlng }}" radius="4000" />
+        <control name="overviewMap" opened="true" />
+      </ng-map>
       <button type="submit" ng-click="deleteEvent(data.id)">DELETE</button>
     </div>
 
@@ -18,8 +24,12 @@
       <div>Date/Time: {{input.datetimeValue}}</div>
       <div>Duration: {{input.duration}}</div>
       <div>Address: {{input.address}}</div>
-      <div>EventIDs: {{input.eventIDs}}</div>
-      <div>id: {{input.id}}</div>
+      <button ng-click="showMap = ! showMap">Show Map</button>
+      <ng-map zoom="15" center="{{ input.latlng }}" style="height: 400px; width: 400px; display: block;" ng-show="showMap">
+        <marker position="{{ input.latlng }}" />
+        <shape name="circle" radius="100" center="{{ input.latlng }}" radius="4000" />
+        <control name="overviewMap" opened="true" />
+      </ng-map>
       <button type="submit" ng-click="unjoinEvent(input.id, input.userId)">Unjoin</button>
     </div>
 

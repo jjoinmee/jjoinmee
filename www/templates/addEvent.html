@@ -2,10 +2,15 @@
   <ion-content>
     <h1>Add Event</h1>
 
+
     <form >
       <div class="list">
+        <ng-map zoom="15" center="{{ coordinates }}" style="height: 400px; width: 400px; display: block;">
+          <marker position="{{ coordinates }}" />
+          <shape name="circle" radius="100" center="{{ coordinates }}" radius="4000" />
+          <control name="overviewMap" opened="true" />
+        </ng-map>
         <input class="ng-hide" ng-model="imageUrl" value="{{ imageUrl }}">
-        <img src="{{ imageUrl }}" alt="">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Event Name</span>
           <input type="text" placeholder="event name" value="{{ inputTitle }}" ng-model="inputTitle">
