@@ -1,4 +1,4 @@
-<ion-view view-title="Add Event">
+<ion-view view-title="join.me">
   <ion-content>
     <h1>Add Event</h1>
 
@@ -28,7 +28,7 @@
           <input type="text" placeholder="duration" value = "{{ duration }}" ng-model="duration">
         </label>
       </div>
-      <button type="submit" class="button icon-right ion-chevron-right button-calm" ng-click="postEvent(inputTitle, address, datetimeValue, duration, imageUrl)">Submit</button>
+       <button type="submit" class="button button-block" ng-click="postEvent(inputTitle, address, datetimeValue, duration, imageUrl)">Add</button>
     </form>
 
     <button ng-click="clearFields()">Cancel</button>
@@ -36,7 +36,7 @@
     <form class="item-input">
       <input type="text" ng-model="location" placeholder="location">
       <input type="text" ng-model="activity" placeholder="activity">
-      <button class="ng-hide" type="submit" ng-click="search(location, activity)">Submit</button>
+      <button class="ng-show" type="submit" ng-click="search(location, activity)">Search</button>
     </form>
 
 
