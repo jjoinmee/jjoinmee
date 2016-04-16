@@ -1,47 +1,14 @@
-<!-- <ion-view view-title="Log In">
-  <ion-content>
-    <h1>User Log In</h1>
-    <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
-  </ion-content>
-</ion-view> -->
-
-<ion-view title="Log In" hide-back-button="true" style="background: #1b5a83">
-
-    <ion-content>
-      <h1>User Log In</h1>
-<!--         <div class="list list-inset"  style="background: #1b5a83">
-
-
-            <button class="button button-block button-light" ng-click="login()">
-                <i class="icon ion-social-facebook"></i>
-                &nbsp;Login with Facebook
-            </button>
-
-
-        </div> -->
-
-      <!--<div>-->
-        <!--<div ng-show="authData">-->
-          <!--<p>Hello, {{ authData.facebook.displayName }}</p>-->
-          <!--<button ng-click="auth.$unauth()">Logout</button>-->
-        <!--</div>-->
-        <!--<div ng-hide="authData">-->
-          <!--<p>Welcome, please log in.</p>-->
-          <!--<button ng-click="auth.$authWithOAuthPopup('facebook')">Login With Facebook</button>-->
-        <!--</div>-->
-      <!--</div>-->
-
+<ion-view title="join.me" hide-back-button="true" style="background: #1e5162">
+      <h1>User Login</h1>
 
       <div ng-hide="isLoggedIn" class="card" ng-click="login()">
         <button class="item">
           Log In with Facebook
         </button>
       </div>
-
       <div class="card" ng-show="isLoggedIn">
         <div class="item item-text-wrap">
-          Hello {{ displayName }}!
-
+          Welcome {{ displayName }}!
         </div>
         <button class="item" ng-click="logout()">
           Log Out
