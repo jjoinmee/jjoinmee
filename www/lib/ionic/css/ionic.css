@@ -4269,7 +4269,7 @@ a.subdued {
 .bar-header {
   top: 0;
   border-top-width: 0;
-  border-bottom-width: 1px; }
+  border-bottom-width: 0px; }
   .bar-header.has-tabs-top {
     border-bottom-width: 0px;
     background-image: none; }
@@ -5644,7 +5644,7 @@ ion-tabs.tabs-color-active-dark .tab-item {
  * --------------------------------------------------
  */
 .item {
-  border-color: #ddd;
+  border-color: #254C7C;
   background-color: #fff;
   color: #444;
   position: relative;
@@ -5945,8 +5945,7 @@ button.item.item-complex {
   position: relative;
   z-index: 2;
   padding: 16px 49px 16px 16px;
-  border: none;
-  background-color: #fff; }
+  border: none; }
 
 a.item-content {
   display: block;
@@ -7607,8 +7606,9 @@ textarea {
   padding: 7px 10px 7px 0px;
   max-width: 200px;
   width: 35%;
-  color: #444;
-  font-size: 16px; }
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400; }
 
 .placeholder-icon {
   color: #aaa; }
@@ -7623,7 +7623,7 @@ textarea {
   box-shadow: none; }
   .item-stacked-label .input-label, .item-stacked-label .icon {
     display: inline-block;
-    padding: 4px 0 0 0px;
+    padding: 4px 0 4px 0px;
     vertical-align: middle; }
 
 .item-stacked-label input,
@@ -7680,7 +7680,8 @@ input[type="tel"],
 input[type="color"] {
   display: block;
   padding-top: 2px;
-  padding-left: 0;
+  padding-left: 5px;
+  padding-right: 5px;
   height: 34px;
   color: #111;
   vertical-align: middle;
@@ -7701,7 +7702,7 @@ input[type="color"] {
 
 .item-input input,
 .item-input textarea {
-  width: 100%; }
+  width: 98%; }
 
 textarea {
   padding-left: 0; }
@@ -8867,8 +8868,11 @@ progress {
 
 .button-block {
   display: block;
+  background-color: #E6ACAB;
   clear: both; }
   .button-block:after {
+    opacity: 0.5;
+    background-color: #E6ACAB;
     clear: both; }
 
 .button-full,
