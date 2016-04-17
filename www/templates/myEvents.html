@@ -1,4 +1,4 @@
-<ion-view view-title="My Events" style="background: #254C7C">
+<ion-view view-title="My Events" style="background: #4F5052">
   <ion-content>
     <h1> </h1>
     
@@ -6,19 +6,19 @@
 
     <div class="item-input" ng-repeat="data in data" ng-if="data.userId === id">
       <div class="list card"style="margin:auto;">
-        <div class="item item-divider">{{data.inputTitle}}</div>
+        <div class="item item-divider" style="background:#04BDCC; color:white">{{data.inputTitle}}</div>
         <div class="item item-image"><img src="{{ data.imageUrl }}" alt=""></div>
         <div class="item item-text-wrap"><b>Where</b>: {{data.address}}</div>
         <div class="item item-text-wrap"><b>When</b>: {{data.datetimeValue}}</div>
         <div class="item item-text-wrap"><b>How long</b>: {{data.duration}}</div>
-        <div><i class="button button-block ion-map" style="margin:auto; font-size:30; border-color:white" ng-click="showMap = ! showMap"></i>
+        <div><i class="button button-block ion-map" style="margin:auto; font-size:30; color:white; border-color:white" ng-click="showMap = ! showMap"></i>
           <ng-map zoom="15" center="{{ data.latlng }}" style="height: 400px; width: 400px; display: block; margin:auto; padding:8px" ng-show="showMap">
             <marker position="{{ data.latlng }}" />
             <shape name="circle" radius="100" center="{{ data.latlng }}" radius="4000" />
             <control name="overviewMap" opened="true" />
           </ng-map>
         </div>
-        <div><i class="button button-block ion-ios-trash-outline" style="margin:auto; font-size:30; border-color:white;" type="submit" ng-click="deleteEvent(data.id)"></i></div>
+        <div><i class="button button-block ion-ios-trash-outline" style="margin:auto; color:white; font-size:30; border-color:white;" type="submit" ng-click="deleteEvent(data.id)"></i></div>
       </div>
     </div>
 

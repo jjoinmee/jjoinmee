@@ -1,4 +1,4 @@
-<ion-view view-title="Add Event" style="background: #254C7C">
+<ion-view view-title="Add Event" style="background: #4F5052">
   <ion-content>
     <h1>  </h1>
 
@@ -29,8 +29,8 @@
         </label>
       </div>
       <div style="text-align:center; padding-bottom:20px">
-       <span><button type="submit" class="button" style="color: white; background: #E6ACAB; width:48%;" ng-click="postEvent(inputTitle, address, datetimeValue, duration, imageUrl)">Add</button></span>
-      <span><button class="button" style="color: white; background: #E6ACAB; width:48%;" ng-click="clearFields()">Clear</button></span>
+       <span><button type="submit" class="button" style="color: white; background: #F0736A; width:48%;" ng-click="postEvent(inputTitle, address, datetimeValue, duration, imageUrl)">Add</button></span>
+      <span><button class="button" style="color: white; background: #F0736A; width:48%;" ng-click="clearFields()">Clear</button></span>
     </div>
     </form>
 
@@ -38,15 +38,15 @@
       <div class="item-input-inset">
         <label class="item item-input-wrapper item-stacked-label" style="background:white; padding:5px; length:40"> 
           <i class="icon ion-ios-search placeholder-icon"></i>
-          <span><input type="text" ng-model="location" placeholder="Enter a location!" style="display:inline"></span>
+          <span><input type="text" ng-model="location" placeholder="Enter a location" style="display:inline"></span>
         </label>
-          <span><button class="button" type="submit" style="background:#E6ACAB; color:white; display:inline; min-height:38px;" ng-click="search(location)">Look up Activities</button></span>
+          <span><button class="button" type="submit" style="background:#F0736A; color:white; display:inline; min-height:37.5px; line-height:37.5px;" ng-click="search(location)">Find Activities</button></span>
       </div>
     </form>
 
     <div class="results item-input" ng-repeat="result in this.results | limitTo: 20">
       <div class="list card" style="margin:auto;">
-        <div class="item item-divider">{{ result.title }}</div>
+        <div class="item item-divider" style="background:#04BDCC; color:white">{{ result.title }}</div>
         <div class="item item-image"><img ng-click='clickInfo(result); getAddress(result.latLng)' ng-src="{{result.imageUrl}}"></div>
       </div>
     </div>

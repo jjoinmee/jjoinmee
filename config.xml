@@ -69,5 +69,5 @@
   </platform>
   <plugin name="cordova-plugin-device" spec="~1.1.1"/>
   <plugin name="cordova-plugin-whitelist" spec="~1.2.1"/>
-  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
+  <icon src="resources/ios/icon/icon-small@3x.png"/>
 </widget>

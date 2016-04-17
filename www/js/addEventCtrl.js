@@ -12,6 +12,7 @@ angular.module('jauntly.addEventCtrl', [])
     ExpediaInfo.getExpInfo(location, activity)
     .then(function (results) {
       $scope.results = results.data.activities;
+      console.log($scope.results) // attributes of activities
     })
     .catch(function (error) {
       console.error(error);
