@@ -41,12 +41,12 @@ $ ionic serve --lab
 # Backlog
 * Geolocation
 * Event notifications
-* Passed events features
-* Personal Events
+* Deletion of passed events
+* Custom events
 * Chat system
 * User profiles
-* Datetime format
-* Join once feature
+* Datetime formatting
+* Join/unjoin details
 
 # Technology & Links
 

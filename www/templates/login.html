@@ -1,17 +1,17 @@
-<ion-view title="Login/Logout" hide-back-button="true" style="background: #254C7C">
+<ion-view title="Login/Logout" hide-back-button="true" style="background: #4F5052">
   <ion-content>
       <h1> </h1>
 
       <div ng-hide="isLoggedIn" class="card" ng-click="login()">
-        <button class="item">
+        <button class="item" style="text-align:left; background:#F0736A; color:white;">
           Log In with Facebook
         </button>
       </div>
       <div class="card" ng-show="isLoggedIn">
-        <div class="item item-text-wrap">
+        <div class="item item-text-wrap" style="background:#F0736A; color:white;">
           Welcome {{ displayName }}!
         </div>
-        <button class="item" ng-click="logout()">
+        <button class="item" style="text-align:left; background:#F0736A; color:white;" ng-click="logout()">
           Log Out
         </button>
       </div>
