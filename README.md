@@ -41,8 +41,12 @@ $ ionic serve --lab
 # Backlog
 * Geolocation
 * Event notifications
+* Passed events features
+* Personal Events
 * Chat system
 * User profiles
+* Datetime format
+* Join once feature
 
 # Technology & Links
 
@@ -57,6 +61,7 @@ $ ionic serve --lab
 * MySQL <https://www.mysql.com>
 * NodeJS <https://nodejs.org/en/>
 * GoogleMaps <https://developers.google.com/maps/>
+* Moment.JS <https://github.com/urish/angular-moment>
 
 
 ## Team Members ##
