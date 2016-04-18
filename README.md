@@ -20,6 +20,27 @@ $ npm install
 $ bower install
 ```
 
+* Also, you'll need to add a file for API keys:
+
+ 	www/js/apiKey.js
+
+ 	var expKey = "insert expedia key";
+	var expSec = "insert expedia secret";
+	var googleMapsApiKey = "insert google key";
+	var fbAppKey = "insert fb app key";
+	var firebaseKey = "insert firebase key";
+
+* Also, add a .env file in the root directory:
+
+	host = ******
+	user = ******
+	password = ******
+	database = ******
+
+* And a MySQL database account: 
+
+	https://www.mysql.com/
+
 * To start the server and view the app on localhost:8100:
 
 ```

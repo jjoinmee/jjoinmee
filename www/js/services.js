@@ -118,4 +118,3 @@ angular.module('jauntly.services', [])
   }
 });
 
-
